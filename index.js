@@ -13,5 +13,10 @@ function func2() {
 function func3() {
     let color = document.body.querySelector(".selector2").value
     document.body.className = `${color}`
-    document.body.style.backgroundColor = `${document.body.classNamegit }`;
+    document.body.style.backgroundColor = `${document.body.className }`;
+}
+
+function func4() {
+    let color = document.body.querySelector(".input").value
+    document.body.style.setProperty('--main-color',`${color}`);
 }
