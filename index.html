@@ -13,13 +13,39 @@
     <div class="calculator">
         <input type="text" id="num1">
         <div class="btns">
-            <button id="plus" onclick="">+</button>
-            <button id="minus" onclick="">-</button>
-            <button id="times" onclick="">*</button>
-            <button id="divide" onclick="">/</button>
+            <button id="plus" onclick="oper='+'">+</button>
+            <button id="minus" onclick="oper='-'">-</button>
+            <button id="times" onclick="oper='*'">*</button>
+            <button id="divide" onclick="oper='/'">/</button>
         </div>
         <input type="text" id="num2">
     </div>
-    <button id="result">RESULT</button>
+    <button id="result" onclick="func()">RESULT</button>
+
+    <script>
+        let oper;
+        function func() {
+            let num1 = Number(document.getElementById("num1").value)
+            let num2 = Number(document.getElementById("num2").value)
+            switch (oper) {
+                case '+':
+                    result = num1 + num2
+                    break
+                
+                case '-':
+                    result = num1 - num2
+                    break
+
+                case '*':
+                    result = num1 - num2
+                    break
+                case '/':
+                    result = num1 / num2
+                    break
+
+            }
+            alert(`Ответ:  ${result}`);
+        }
+    </script>
 </body>
 </html>
