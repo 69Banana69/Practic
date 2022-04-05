@@ -20,3 +20,7 @@ function func4() {
     let color = document.body.querySelector(".input").value
     document.body.style.setProperty('--main-color',`${color}`);
 }
+
+function func5(selectElement) {
+    document.body.style.setProperty('--main-color', `${selectElement.value}`)
+}
