@@ -9,3 +9,9 @@ function func2() {
     
     document.body.style.backgroundColor = `${color}`
 }
+
+function func3() {
+    let color = document.body.querySelector(".selector2").value
+    document.body.className = `${color}`
+    document.body.style.backgroundColor = `${document.body.classNamegit }`;
+}
