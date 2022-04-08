@@ -13,7 +13,6 @@ function func2() {
 function func3() {
     let color = document.body.querySelector(".selector2").value
     document.body.className = `${color}`
-    document.body.style.backgroundColor = `${document.body.className }`;
 }
 
 function func4() {
