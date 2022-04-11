@@ -2,22 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Colors - adding and removing</title>
-    <link rel="stylesheet" href="/main.css" />
+    <title>task4.1</title>
   </head>
-  <body>
-    <input type="text" placeholder="enter new color here" class="input-color" />
-    <button class="add-button">Add</button>
-    <button class="remove-button">Remove</button>
-    <br />
-    <br />
-    <select>
-      <option disabled selected value="not selected">-- Select a value --</option>
-      <option value="blue">blue</option>
-    </select>
-    <button class="remove-selected">Remove selected</button>
-    <script src="main.js"></script>
+
+  <body onload="showFlower()">
+    <div class="func1">
+      <h1>Furniture</h1>
+      <input type="text" placeholder="Add furniture" id="furniture" />
+      <button onclick="addFurniture()">Add</button>
+      <p id="func1"></p>
+      <script src="/index.js"></script>
+    </div>
+    <div class="func2">
+      <h1>Audience number</h1>
+      <input type="text" id="number" placeholder="Add new number audience" />
+      <button onclick="changeAudience()">Change number audience</button>
+    </div>
+    <div class="func3">
+      <h1>Count flower</h1>
+      <h3 id="flower"></h3>
+      <button onclick="addFlower()">+</button>
+      <button onclick="removeFlower()">-</button>
+    </div>
+    <div class="func5">
+      <h1>Availability of a computer</h1>
+      <input type="checkbox" id="check" onclick="addComputer()">
+      <p id="computer"></p>
+    </div>
   </body>
 </html>
