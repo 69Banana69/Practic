@@ -39,7 +39,6 @@ function addButtonClicked() {
     if (checkIfColorAdded(htmlElements.input.value) === true) {
       alert('Color has been already added')
     } else {
-      console.log(htmlElements.input.value)
       addColor(htmlElements.input.value)
       chooseColor(htmlElements.input.value)
       setColor(htmlElements.input.value)
@@ -63,12 +62,10 @@ function removeSelectedColorClicked() {
   // 1. Вызывает getSelectedValue, чтобы получить значение выбранного option в выпадающем списке.
   // 1.1. Если значение выбранного option равно 'not selected', показывает сообщение 'Please choose a value to remove'.
   // 1.2. Если же значение выбранного option не равно 'not selected', вызывает removeColor, передавая значение выбранного option в качестве входного параметра.
-  getSelectedValue()
-  console.log(htmlElements.selectColor.value)
-  if (htmlElements.selectColor.value === 'not selected') {
+  if (getSelectedValue() === 'not selected') {
     alert('Please choose a value to remove')
   } else {
-    removeColor(htmlElements.selectColor.value)
+    removeColor(getSelectedValue())
     reset()
   }
 }
@@ -100,16 +97,14 @@ function addColor(color) {
   // 2. Вызывает appendChild (https://mzl.la/2J1CTEo) на выпадающем списке, указывая созданный элмент option в качестве входящего параметра
   // 3. Вызывает функцию reset
   let newOption = new Option(htmlElements.input.value, htmlElements.input.value)
-  htmlElements.selectColor.append(newOption)
+  htmlElements.selectColor.appendChild(newOption)
 }
 
 function chooseColor(color) {
   // 1. Так же, как и в функции checkIfColorAdded, пробегает по всем option выпадающего списка начиная со второго элемента (начальное условие цикла будет let i = 1, т.к. элементы коллекций в JavaScript считаются с 0, а нулевой option имеет значение -- Select a value --, поэтому мы не учитываем его в расчетах)
   // 1.1. Как только i-тое значение одного из option совпало со значением цвета, указанного в качестве входного параметра, вызывает функцию setSelectedIndex, передавая в нее индекс i итератора цикла.
   for (let i = 1; i < htmlElements.selectColor.length; i++){
-    console.log(htmlElements.input.value)
     if (htmlElements.selectColor[i].value === color) {
-      console.log()
       setSelectedIndex(i)
     }
   }
@@ -142,7 +137,7 @@ function reset() {
   // 1. Устанавливает значение текстового поля в ''
   // 2. Удаляет CSS переменную --color на body
   htmlElements.input.value = ''
-  htmlElements.body.style = ''
+  htmlElements.body.style.removeProperty('--color')
 }
 
 function checkIfColorCanBeAdded(color) {
