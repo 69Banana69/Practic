@@ -19,6 +19,7 @@ function init() {
     addButton: document.querySelector("button.add-button"),
     items: document.querySelector("div.items"),
   };
+  render();
 }
 init();
 
@@ -37,19 +38,22 @@ function render() {
   //     <button class="delete-button">X</button>
   //   </div>
   // </div>
+
+  for (let i=0; i<itemsArray.length; i++) {
   let div = document.createElement("div");
   div.className = "item";
-  div.style.backgroundColor = htmlElements.bgColorInput.value;
+  div.style.backgroundColor = itemsArray[i].bgColor;
   itms.append(div);
 
   let span = document.createElement("span");
   span.className = "item-text";
-  span.style.color = htmlElements.textColorInput.value;
-  span.innerHTML = `${htmlElements.textColorInput.value}`;
+  span.style.color = itemsArray[i].color;
+  span.innerHTML = `${itemsArray[i].color}`;
   div.append(span);
 
-  let btn = document.createElement("button")
-  btn.className = 'delete-button'
-  btn.innerHTML = 'X'
-  div.appendChild(btn)
+  let btn = document.createElement("button");
+  btn.className = "delete-button";
+  btn.innerHTML = "X";
+  div.appendChild(btn);
+  }
 }
