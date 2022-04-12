@@ -1,41 +1,26 @@
 let audience = {
-    number: 57,
-    furniture: ['table', 'chair', 'closet'],
-    board: {
-        material: 'Wood',
-        size: '100x200',
-    },
-    computer: true,
-    projector: false,
-    flower: 0,
-    floor: 'Wood',
-    wall: 'concrete',
-}
+  number: 57,
+  changeNumber: function () {
+    number = 22;
+    return number;
+  },
+  board: {
+    material: "Wood",
+    size: "100x200",
+  },
+  changeBoardSize: () => {
+    board.size = "100x50";
+    return board.size;
+  },
 
-function addFurniture() {
-    audience.furniture.push(document.getElementById('furniture').value)
-    document.getElementById('func1').innerHTML = audience.furniture
-}
+  floor: "Wood",
+  changeFloor() {
+    floor = "concrete";
+    return floor;
+  },
+  wall: "concrete",
+};
 
-function changeAudience() {
-    audience.number = document.getElementById('number').value
-    alert(`Audience number is ${audience.number}`)
-}
-
-function addComputer() {
-    audience.computer = document.getElementById('check').checked ? 'avaible' : 'Not avaible'
-    document.getElementById("computer").innerHTML = audience.computer
-}
-
-function showFlower() {
-    document.getElementById('flower').innerHTML = audience.flower
-}
-
-function addFlower() {
-    document.getElementById('flower').innerHTML = ++audience.flower
-}   
-
-function removeFlower() {
-    document.getElementById('flower').innerHTML = --audience.flower
-
-}
+audience.fullBoard = function () {
+  return `${board.material} ${board.size}`;
+};
