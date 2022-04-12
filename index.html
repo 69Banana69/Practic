@@ -2,34 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>task4.1</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
   </head>
-
-  <body onload="showFlower()">
-    <div class="func1">
-      <h1>Furniture</h1>
-      <input type="text" placeholder="Add furniture" id="furniture" />
-      <button onclick="addFurniture()">Add</button>
-      <p id="func1"></p>
-      <script src="/index.js"></script>
+  <body>
+    <div class="container">
+      <input class="bg-color-input" type="text" placeholder="background color" />
+      <input class="text-color-input" type="text" placeholder="text color" />
+      <button class="add-button" onclick="render()">Add</button>
+      <div class="items" id="itms">
+        <div class="item" style="background-color: blue;">
+          <span class="item-text" style="color: white;">
+            white
+          </span>
+          <button class="delete-button">X</button>
+        </div>
+        <div class="item" style="background-color: yellow;">
+          <span class="item-text" style="color: black;">
+            black
+          </span>
+          <button class="delete-button">X</button>
+        </div>
+      </div>
     </div>
-    <div class="func2">
-      <h1>Audience number</h1>
-      <input type="text" id="number" placeholder="Add new number audience" />
-      <button onclick="changeAudience()">Change number audience</button>
-    </div>
-    <div class="func3">
-      <h1>Count flower</h1>
-      <h3 id="flower"></h3>
-      <button onclick="addFlower()">+</button>
-      <button onclick="removeFlower()">-</button>
-    </div>
-    <div class="func5">
-      <h1>Availability of a computer</h1>
-      <input type="checkbox" id="check" onclick="addComputer()">
-      <p id="computer"></p>
-    </div>
+    <div class="hello-world">Such a wonderful day!</div>
+    <script src="main.js"></script>
   </body>
 </html>
