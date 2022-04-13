@@ -7,30 +7,31 @@
     <title>task4.1</title>
   </head>
 
-  <body>
-    <!-- <div class="func1">
+  <body onload="audience.showFlower(), audience.addComputer()">
+    <div class="func1">
       <h1>Furniture</h1>
       <input type="text" placeholder="Add furniture" id="furniture" />
-      <button class="addFurn">Add</button>
+      <button class="addFurn" onclick="audience.addFurniture()">Add</button>
       <p id="func1"></p>
-      <script src="/index.js"></script>
     </div>
     <div class="func2">
       <h1>Audience number</h1>
       <input type="text" id="number" placeholder="Add new number audience" />
-      <button onclick="changeAudience()">Change number audience</button>
+      <button onclick="audience.changeAudience()">
+        Change number audience
+      </button>
     </div>
     <div class="func3">
       <h1>Count flower</h1>
       <h3 id="flower"></h3>
-      <button onclick="addFlower()">+</button>
-      <button onclick="removeFlower()">-</button>
+      <button onclick="audience.addFlower()">+</button>
+      <button onclick="audience.removeFlower()">-</button>
     </div>
     <div class="func5">
       <h1>Availability of a computer</h1>
-      <input type="checkbox" id="check" onclick="addComputer()">
-      <p id="computer"></p> -->
-    <!-- </div> -->
+      <input type="checkbox" id="check" onclick="audience.addComputer()" />
+      <p id="computer"></p>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
