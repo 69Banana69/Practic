@@ -18,42 +18,40 @@ function init() {
     textColorInput: document.querySelector("input.text-color-input"),
     addButton: document.querySelector("button.add-button"),
     items: document.querySelector("div.items"),
+    removeButton: document.querySelectorAll("button.delete-button"),
   };
   render();
+  removeItem();
 }
 init();
 
 function render() {
-  // <div class="item">
-  //   <div class="item" style="background-color: blue;">
-  //     <span class="item-text" style="color: white;">
-  //       white
-  //     </span>
-  //     <button class="delete-button">X</button>
-  //   </div>
-  //   <div class="item" style="background-color: yellow;">
-  //     <span class="item-text" style="color: black;">
-  //       black
-  //     </span>
-  //     <button class="delete-button">X</button>
-  //   </div>
-  // </div>
+  for (let i = 0; i < itemsArray.length; i++) {
+    let div = document.createElement("div");
+    div.className = "item";
+    div.id = `${i}`;
+    div.style.backgroundColor = itemsArray[i].bgColor;
+    itms.append(div);
 
-  for (let i=0; i<itemsArray.length; i++) {
-  let div = document.createElement("div");
-  div.className = "item";
-  div.style.backgroundColor = itemsArray[i].bgColor;
-  itms.append(div);
+    let span = document.createElement("span");
+    span.className = "item-text";
+    span.style.color = itemsArray[i].color;
+    span.innerHTML = `${itemsArray[i].color}`;
+    div.append(span);
 
-  let span = document.createElement("span");
-  span.className = "item-text";
-  span.style.color = itemsArray[i].color;
-  span.innerHTML = `${itemsArray[i].color}`;
-  div.append(span);
+    let btn = document.createElement("button");
+    btn.className = "delete-button";
+    btn.id = `${i}`;
+    btn.innerHTML = "X";
+    div.appendChild(btn);
+  }
+}
 
-  let btn = document.createElement("button");
-  btn.className = "delete-button";
-  btn.innerHTML = "X";
-  div.appendChild(btn);
+function removeItem() {
+  let btns = document.querySelectorAll(".delete-button");
+
+  btns.forEach((btn) => btn.addEventListener("click", removeItems));
+  function removeItems() {
+    this.parentNode.remove();
   }
 }
