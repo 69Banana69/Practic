@@ -29,7 +29,6 @@ function render() {
   for (let i = 0; i < itemsArray.length; i++) {
     let div = document.createElement("div");
     div.className = "item";
-    div.id = `${i}`;
     div.style.backgroundColor = itemsArray[i].bgColor;
     itms.append(div);
 
@@ -41,7 +40,6 @@ function render() {
 
     let btn = document.createElement("button");
     btn.className = "delete-button";
-    btn.id = `${i}`;
     btn.innerHTML = "X";
     div.appendChild(btn);
   }
