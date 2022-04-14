@@ -22,6 +22,7 @@ function init() {
   };
   render();
   removeItem();
+  selectItem();
 }
 init();
 
@@ -51,5 +52,14 @@ function removeItem() {
   btns.forEach((btn) => btn.addEventListener("click", removeItems));
   function removeItems() {
     this.parentNode.remove();
+  }
+}
+
+function selectItem() {
+  let item = document.querySelectorAll(".item");
+
+  item.forEach((items) => items.addEventListener("click", selectItems));
+  function selectItems() {
+    window.getSelection().selectAllChildren(this);
   }
 }
