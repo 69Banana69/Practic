@@ -10,9 +10,10 @@ let audience = {
   floor: "Wood",
   computer: true,
   wall: "concrete",
+  
   changeBoardSize: () => {
-    this.board;
-    alert(this.board);
+    audience.board.size = document.getElementById('inputSize').value;
+    document.getElementById('curBS').textContent = audience.board.size
   },
   addFurniture: function () {
     this.furniture.push(document.getElementById("furniture").value);
@@ -41,3 +42,5 @@ audience.addFlower = function () {
 audience.removeFlower = function () {
   document.getElementById("flower").textContent = --audience.flower;
 };
+
+audience.changeBoardSize();
