@@ -32,15 +32,14 @@ let audience = {
 };
 
 audience.showFlower = function () {
-  document.getElementById("flower").textContent = audience.flower;
+  document.getElementById("flower").textContent = this.flower;
 };
 
 audience.addFlower = function () {
-  document.getElementById("flower").textContent = ++audience.flower;
+  document.getElementById("flower").textContent = ++this.flower;
 };
 
 audience.removeFlower = function () {
-  document.getElementById("flower").textContent = --audience.flower;
+  document.getElementById("flower").textContent = --this.flower;
 };
 
-audience.changeBoardSize();
