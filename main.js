@@ -35,12 +35,12 @@ function render() {
     let span = document.createElement("span");
     span.className = "item-text";
     span.style.color = itemsArray[i].color;
-    span.innerHTML = `${itemsArray[i].color}`;
+    span.textContent = `${itemsArray[i].color}`;
     div.append(span);
 
     let btn = document.createElement("button");
     btn.className = "delete-button";
-    btn.innerHTML = "X";
+    btn.textContent = "X";
     div.appendChild(btn);
   }
 }
