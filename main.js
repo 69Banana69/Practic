@@ -52,6 +52,8 @@ function removeItem() {
   btns.forEach((btn) => btn.addEventListener("click", removeItems));
   function removeItems() {
     this.parentNode.remove();
+
+    render();
   }
 }
 
@@ -62,4 +64,27 @@ function selectItem() {
   function selectItems() {
     window.getSelection().selectAllChildren(this);
   }
+}
+
+function addItem() {
+  itemsArray.push({
+    color: htmlElements.textColorInput.value,
+    bgColor: htmlElements.bgColorInput.value,
+  });
+  lastChild = itemsArray.slice(-1);
+  let div = document.createElement("div");
+  div.className = "item";
+  div.style.backgroundColor = lastChild[0].bgColor;
+  itms.append(div);
+
+  let span = document.createElement("span");
+  span.className = "item-text";
+  span.style.color = lastChild[0].color;
+  span.textContent = `${lastChild[0].color}`;
+  div.append(span);
+
+  let btn = document.createElement("button");
+  btn.className = "delete-button";
+  btn.textContent = "X";
+  div.appendChild(btn);
 }
