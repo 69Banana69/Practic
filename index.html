@@ -4,21 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Timer</title>
     <link rel="stylesheet" href="main.css" />
   </head>
-  <body>
+  <body onload="getClock()">
     <div class="container">
-      <h1 class="header">I'm heading!</h1>
-      <input
-        class="bg-color-input"
-        type="text"
-        placeholder="background color"
-      />
-      <input class="text-color-input" type="text" placeholder="text color" />
-      <button class="add-button">Add</button>
-      <div class="items" id="itms"></div>
-      <div class="hello-world">Such a wonderful day!</div>
+      <div class="links">
+        <a data-mode="clock" class="clock selected" href="#">clock</a>
+        <a data-mode="stopwatch" class="stopwatch" href="#">stopwatch</a>
+        <a data-mode="timer" class="timer" href="#">timer</a>
+      </div>
+      <div class="output"></div>
+      <div class="buttons">
+        <button class="start hidden">Start</button>
+        <button class="stop hidden">Stop</button>
+        <button class="reset hidden">Reset</button>
+      </div>
     </div>
     <script src="main.js"></script>
   </body>
