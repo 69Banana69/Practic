@@ -7,7 +7,7 @@
     <title>Timer</title>
     <link rel="stylesheet" href="main.css" />
   </head>
-  <body onload="getClock()">
+  <body onload="getClock(), getStopwatch()">
     <div class="container">
       <div class="links">
         <a data-mode="clock" class="clock selected" href="#">clock</a>
@@ -15,10 +15,18 @@
         <a data-mode="timer" class="timer" href="#">timer</a>
       </div>
       <div class="output"></div>
-      <div class="buttons">
-        <button class="start hidden">Start</button>
-        <button class="stop hidden">Stop</button>
-        <button class="reset hidden">Reset</button>
+      <div class="getstopwatch hidden">
+        <div class="time">
+          <div class="hour">00</div>
+          <div class="minute">00</div>
+          <div class="second">00</div>
+          <div class="millisecond">00</div>
+        </div>
+        <div class="buttons">
+          <button class="start">Start</button>
+          <button class="stop">Stop</button>
+          <button class="reset">Reset</button>
+        </div>
       </div>
     </div>
     <script src="main.js"></script>

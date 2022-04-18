@@ -12,7 +12,8 @@ body {
   border-radius: 8px;
 }
 
-.container .output {
+.container .output,
+.getstopwatch {
   margin-top: 20px;
   font-size: 30px;
   font-family: sans-serif;
@@ -22,7 +23,7 @@ body {
   margin-top: 30px;
 }
 
-.container .buttons button {
+.container .getstopwatch .buttons button {
   font-size: 15px;
   background-color: whitesmoke;
   border: none;
@@ -49,7 +50,26 @@ body {
 .container .links a.selected {
   color: blue;
 }
+.container .getstopwatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+}
+
+.container .getstopwatch .time {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.hour, .minute, .second, .millisecond {
+  margin-right: 15px;
+}
+
+.getstopwatch.hidden {
+  display: none;
+}
 .hidden {
   display: none;
 }
