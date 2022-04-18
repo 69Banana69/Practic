@@ -18,14 +18,12 @@ function init() {
     textColorInput: document.querySelector("input.text-color-input"),
     addButton: document.querySelector("button.add-button"),
     items: document.querySelector("div.items"),
-    
   };
   render();
   removeItem();
   selectItem();
 }
 init();
-removeItem();
 
 htmlElements.bgColorInput.onblur = function () {
   if (checkIfColorCanBeAdded(this.value) != true) {
@@ -103,22 +101,17 @@ function render() {
 
 function removeItem() {
   let btns = document.querySelectorAll(".delete-button");
-  let colors = itemsArray.map((el) => el.color);
-
   btns.forEach((btn) => btn.addEventListener("click", removeItems));
-
-  function removeItems(event) {
-    let index = colors.indexOf(`${this.parentNode.id}`);
-    event.stopPropagation();
-    
-   
-    console.log(this.parentNode.id)
-    console.log(index)
-    itemsArray.splice(index, 1);
-    this.parentNode.remove();
-  }
-  
 }
+function removeItems(event) {
+  let colors = itemsArray.map((el) => el.color);
+  let index = colors.indexOf(`${this.parentNode.id}`);
+  event.stopPropagation();
+
+  itemsArray.splice(index, 1);
+  this.parentNode.remove();
+}
+
 
 function selectItem() {
   let item = document.querySelectorAll(".item");
@@ -140,7 +133,7 @@ function addItem() {
   lastChild = itemsArray.slice(-1);
   let div = document.createElement("div");
   div.className = "item";
-  div.id = lastChild[0].bgColor;
+  div.id = lastChild[0].color;
   div.style.backgroundColor = lastChild[0].bgColor;
   itms.append(div);
 
@@ -156,7 +149,4 @@ function addItem() {
   div.appendChild(btn);
   removeItem();
   selectItem();
-  return itemsArray
 }
-console.log(itemsArray)
-
