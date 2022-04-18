@@ -18,13 +18,67 @@ function init() {
     textColorInput: document.querySelector("input.text-color-input"),
     addButton: document.querySelector("button.add-button"),
     items: document.querySelector("div.items"),
-    removeButton: document.querySelectorAll(".delete-button"),
+    
   };
   render();
   removeItem();
   selectItem();
 }
 init();
+removeItem();
+
+htmlElements.bgColorInput.onblur = function () {
+  if (checkIfColorCanBeAdded(this.value) != true) {
+    this.classList.add("error");
+  } else {
+    this.classList.remove("error");
+  }
+};
+
+htmlElements.textColorInput.onblur = function () {
+  if (checkIfColorCanBeAdded(this.value) != true) {
+    this.classList.add("error");
+  } else {
+    this.classList.remove("error");
+  }
+};
+
+htmlElements.addButton.addEventListener("click", buttonValid);
+
+function buttonValid() {
+  let colors = itemsArray.map((el) => el.color);
+  let bgColors = itemsArray.map((el) => el.bgColor);
+  if (
+    colors.includes(`${htmlElements.textColorInput.value}`) ||
+    htmlElements.textColorInput.value === "" ||
+    bgColors.includes(`${htmlElements.bgColorInput.value}`) ||
+    htmlElements.bgColorInput.value === ""
+  ) {
+    alert("Такой цвет уже есть");
+    htmlElements.bgColorInput.classList.add("error");
+    htmlElements.textColorInput.classList.add("error");
+  } else {
+    if (
+      checkIfColorCanBeAdded(`${htmlElements.textColorInput.value}`) != true ||
+      checkIfColorCanBeAdded(`${htmlElements.bgColorInput.value}`) != true
+    ) {
+      alert("Такого цвета не существует");
+    } else {
+      addItem();
+    }
+  }
+}
+
+function checkIfColorCanBeAdded(color) {
+  if (color.indexOf("rgb") > -1 || color === "") {
+    return false;
+  }
+
+  let div = document.createElement("div");
+  div.style.backgroundColor = color;
+  let colorIsSetCorrectly = div.style.backgroundColor === color;
+  return colorIsSetCorrectly;
+}
 
 function render() {
   for (let i = 0; i < itemsArray.length; i++) {
@@ -53,33 +107,30 @@ function removeItem() {
 
   btns.forEach((btn) => btn.addEventListener("click", removeItems));
 
-  function removeItems() {
-   
+  function removeItems(event) {
     let index = colors.indexOf(`${this.parentNode.id}`);
+    event.stopPropagation();
+    
+   
+    console.log(this.parentNode.id)
+    console.log(index)
     itemsArray.splice(index, 1);
     this.parentNode.remove();
-  }
-}
-
-function selectItem() {
-  let item = document.querySelectorAll(".item");
-  let btns = document.querySelectorAll(".delete-button");
-
-  item.forEach((items) => items.addEventListener("click", selectItems));
-  btns.forEach((btn) =>
-    btn.addEventListener("click", function selectBtn(event) {
-      event.stopPropagation();
-    })
-  );
-  function selectItems() {
-    document.querySelector(".header").style.backgroundColor =
-      this.style.backgroundColor;
-    document.querySelector(".header").style.color =
-      this.firstChild.style.color;
   }
   
 }
 
+function selectItem() {
+  let item = document.querySelectorAll(".item");
+
+  item.forEach((items) => items.addEventListener("click", selectItems));
+
+  function selectItems() {
+    document.querySelector(".header").style.backgroundColor =
+      this.style.backgroundColor;
+    document.querySelector(".header").style.color = this.firstChild.style.color;
+  }
+}
 
 function addItem() {
   itemsArray.push({
@@ -89,7 +140,7 @@ function addItem() {
   lastChild = itemsArray.slice(-1);
   let div = document.createElement("div");
   div.className = "item";
-  div.id = lastChild[0].bgColor
+  div.id = lastChild[0].bgColor;
   div.style.backgroundColor = lastChild[0].bgColor;
   itms.append(div);
 
@@ -103,7 +154,9 @@ function addItem() {
   btn.className = "delete-button";
   btn.textContent = "X";
   div.appendChild(btn);
-  removeItem()
-  selectItem()
-
+  removeItem();
+  selectItem();
+  return itemsArray
 }
+console.log(itemsArray)
+
