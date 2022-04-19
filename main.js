@@ -71,16 +71,16 @@ htmlElements.resetBtn.addEventListener("click", () => {
 let clockInterval = setInterval(getClock, 1000);
 
 function getClock() {
-  let date = new Date();
+  const date = new Date();
 
   let hours = date.getHours();
-  if (hours < 10) hours = "0" + hours;
+  if (hours < 10) hours = `0${hours}`;
 
   let minutes = date.getMinutes();
-  if (minutes < 10) minutes = "0" + minutes;
+  if (minutes < 10) minutes = `0${minutes}`;
 
   let seconds = date.getSeconds();
-  if (seconds < 10) seconds = "0" + seconds;
+  if (seconds < 10) seconds = `0${seconds}`;
 
   htmlElements.output.textContent = `${hours}:${minutes}:${seconds}`;
 }
@@ -94,37 +94,34 @@ let hour = 00,
   interval;
 
 function startStopwatch() {
+
+//Millisecond
   millisecond++;
-  millisecond < 9
-    ? (htmlElements.millisecond.innerText = "0" + millisecond)
-    : (htmlElements.millisecond.innerText = millisecond);
+  htmlElements.millisecond.innerText =
+    millisecond < 9 ? `0${millisecond}` : millisecond;
   if (millisecond > 99) {
     second++;
-    htmlElements.second.innerText = "0" + second;
+    htmlElements.second.innerText = `0${second}`;
     millisecond = 0;
-    htmlElements.millisecond.innerText = "0" + millisecond;
+    htmlElements.millisecond.innerText = `0${millisecond}`;
   }
-  second < 10
-    ? (htmlElements.second.innerText = "0" + second)
-    : (htmlElements.second.innerText = second);
-
+  htmlElements.second.innerText = second < 10 ? `0${second}` : second;
+//second
   if (second > 59) {
     minute++;
-    htmlElements.minute.innerText = "0" + minute;
+    htmlElements.minute.innerText = `0${minute}`;
     second = 0;
-    htmlElements.second.innerText = "0" + second;
+    htmlElements.second.innerText = `0${second}`;
   }
-  minute < 10
-    ? (htmlElements.minute.innerText = "0" + minute)
-    : (htmlElements.minute.innerText = minute);
-
+  htmlElements.minute.innerText = minute < 10 ? `0${minute}` : minute;
+//hour
   if (minute > 59) {
     hour++;
-    htmlElements.hour.innerText = "0" + hour;
+    htmlElements.hour.innerText = `0${hour}`;
     minute = 0;
-    htmlElements.minute.innerText = "0" + minute;
+    htmlElements.minute.innerText = `0${minute}`;
   }
   hour < 10
-    ? (htmlElements.hour.innerText = "0" + hour)
+    ? (htmlElements.hour.innerText = `0${hour}`)
     : (htmlElements.hour.innerText = hour);
 }
