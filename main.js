@@ -94,8 +94,7 @@ let hour = 00,
   interval;
 
 function startStopwatch() {
-
-//Millisecond
+  //Millisecond
   millisecond++;
   htmlElements.millisecond.innerText =
     millisecond < 9 ? `0${millisecond}` : millisecond;
@@ -106,7 +105,7 @@ function startStopwatch() {
     htmlElements.millisecond.innerText = `0${millisecond}`;
   }
   htmlElements.second.innerText = second < 10 ? `0${second}` : second;
-//second
+  //second
   if (second > 59) {
     minute++;
     htmlElements.minute.innerText = `0${minute}`;
@@ -114,14 +113,12 @@ function startStopwatch() {
     htmlElements.second.innerText = `0${second}`;
   }
   htmlElements.minute.innerText = minute < 10 ? `0${minute}` : minute;
-//hour
+  //hour
   if (minute > 59) {
     hour++;
     htmlElements.hour.innerText = `0${hour}`;
     minute = 0;
     htmlElements.minute.innerText = `0${minute}`;
   }
-  hour < 10
-    ? (htmlElements.hour.innerText = `0${hour}`)
-    : (htmlElements.hour.innerText = hour);
+  htmlElements.hour.innerText = hour < 10 ? `0${hour}` : hour;
 }
