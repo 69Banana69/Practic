@@ -1,26 +1,30 @@
-import { htmlElements } from "../main.js"
+function Tab(mode) {
+    this.mode = mode;
+}
 
+Tab.prototype.changeTab = function (tab) {
+    this.mode = tab;
+}
 
-function tabs () {
-    htmlElements.links.forEach(link => link.classList.remove('selected'))
-    this.classList.add('selected')
-    let mode = this.getAttribute('data-mode')
-        
-    if (mode === 'stopwatch') {
-        htmlElements.getstopwatch.classList.remove('hidden')
-        htmlElements.clock.classList.add('hidden')
+Tab.prototype.updateClock = function (htmlElements) {
+    switch (this.mode) {
+        case 'stopwatch': {
+            htmlElements.getstopwatch.classList.remove('hidden')
+            htmlElements.clock.classList.add('hidden')
+            break
+        }
+        case 'clock': {
+            htmlElements.clock.classList.remove('hidden')
+            htmlElements.getstopwatch.classList.add('hidden')
+            break
+        }
+        case 'timer': {
+            htmlElements.getstopwatch.classList.add('hidden')
+            htmlElements.clock.classList.add('hidden')
+            break
+        }
     }
-    if (mode === 'clock') {
-        htmlElements.clock.classList.remove('hidden')
-        htmlElements.getstopwatch.classList.add('hidden')
-    }
-    if (mode == 'timer') {
-        htmlElements.getstopwatch.classList.add('hidden')
-        htmlElements.clock.classList.add('hidden')
-    }
-
+}
+export default Tab
     
     
-  }
-
-  export default tabs
