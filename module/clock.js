@@ -1,7 +1,12 @@
-import { htmlElements } from "../main.js"
+//Не знаю как сделать вывод часов в main.js
 
-setInterval(getClock, 1000)
-function getClock() {
+export default function Clock(){
+  
+  this.timer = null;
+
+}
+
+Clock.prototype.render = function() {
     const date = new Date();
   
     let hours = date.getHours();
@@ -12,8 +17,20 @@ function getClock() {
   
     let seconds = date.getSeconds();
     if (seconds < 10) seconds = `0${seconds}`;
-  
-    htmlElements.clock.textContent = `${hours}:${minutes}:${seconds}`;
+
+    document.querySelector('.getclock').innerText = `${hours}:${minutes}:${seconds}`
+
   }
 
-  export default getClock
+  Clock.prototype.startClock = function(){
+    let render = this.render.bind(this);
+    render();
+    this.timer = setInterval(function () {
+      render()}, 1000)
+   
+  }
+
+
+
+  
+  

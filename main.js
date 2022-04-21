@@ -1,15 +1,19 @@
 import Tab from "./module/tabs.js";
-import getClock from "./module/clock.js";
+import Clock from "./module/clock.js";
 import {stopwatch, startStopwatch, pauseStopwatch, resetStopwatch} from "./module/stopwatch.js";
-
 export { htmlElements }
 //Fields
+const myClock = new Clock()
+myClock.startClock()
+
+
 const tabs = new Tab('clock');
+
 const htmlElements = {};
 htmlElements.startBtn = document.querySelector(".container .buttons button.start");
 htmlElements.stopBtn = document.querySelector(".container .buttons button.stop");
 htmlElements.resetBtn = document.querySelector(".container .buttons button.reset");
-htmlElements.clock = document.querySelector(".container .output .clock");
+htmlElements.clock = document.querySelector(".getclock");
 htmlElements.stopwatch = document.querySelector(".container .links .stopwatch");
 htmlElements.timer = document.querySelector(".container .links .timer");
 htmlElements.output = document.querySelectorAll(".output > [data-mode]");
@@ -31,3 +35,11 @@ htmlElements.links.forEach(link => link.addEventListener('click', function onTab
     tabs.changeTab(mode)
     tabs.updateClock(htmlElements)
 }))
+
+
+
+
+
+    
+
+
