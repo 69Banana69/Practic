@@ -1,14 +1,14 @@
 //Не знаю как сделать вывод часов в main.js
 
+import { htmlElements } from "../main.js";
+
 export default function Clock(){
-  
   this.timer = null;
 
 }
 
 Clock.prototype.render = function() {
     const date = new Date();
-  
     let hours = date.getHours();
     if (hours < 10) hours = `0${hours}`;
   
