@@ -54,6 +54,8 @@ htmlElements.timerStop = document.querySelector(
   ".container .output .timer .buttons .stop"
 );
 
+htmlElements.timerOver = document.querySelector(".over")
+
 //Listener
 
 //Timer

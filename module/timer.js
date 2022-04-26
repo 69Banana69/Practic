@@ -1,5 +1,5 @@
 import { htmlElements } from "../main.js";
-
+//TODO Add valid
 export default class Timer {
   constructor(hour, minute, second, interval) {
     this.hour = hour;
@@ -21,7 +21,6 @@ export default class Timer {
     this.hour = prompt("Введите часы:");
     this.minute = prompt("Минуты");
     this.second = prompt("Секунды");
-
     this.showTimer();
   }
 
@@ -36,10 +35,15 @@ export default class Timer {
       this.minute = 59;
     }
 
-    if (this.hour === 0 && this.minute === 0 && this.second === 0) {
+
+    if (
+      (this.hour && this.minute && this.second) === 0 ||
+      (this.hour && this.minute && this.second) === "0"
+    ) {
       clearInterval(this.interval);
-      alert("Time down");
+      htmlElements.timerOver.classList.remove("hidden");
     }
+
     htmlElements.timerMin.innerText =
       this.minute < 10 ? `0${this.minute}` : this.minute;
     htmlElements.timerSec.innerText =
@@ -55,12 +59,14 @@ export default class Timer {
       this.interval = setInterval(function () {
         render();
       }, 1000);
+      htmlElements.timerOver.classList.add("hidden");
     }
   }
 
   stopTimer() {
     clearInterval(this.interval);
     this.interval = null;
+    htmlElements.timerOver.classList.add("hidden");
   }
 
   resetTimer() {
@@ -70,5 +76,6 @@ export default class Timer {
     this.minute = 5;
     this.second = 0;
     this.showTimer();
+    htmlElements.timerOver.classList.add("hidden");
   }
 }
