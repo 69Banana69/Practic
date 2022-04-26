@@ -13,17 +13,17 @@ body {
 }
 
 .container .output,
-.getstopwatch {
+.getstopwatch, .container .output .timer {
   margin-top: 20px;
   font-size: 30px;
-  font-family: sans-serif;
+  font-family: monospace;
 }
 
 .container .buttons {
   margin-top: 30px;
 }
 
-.container .getstopwatch .buttons button {
+.container .getstopwatch .buttons button, .container .timer .buttons button {
   font-size: 15px;
   background-color: whitesmoke;
   border: none;
@@ -57,7 +57,7 @@ body {
 
 }
 
-.container .getstopwatch .time {
+.container .getstopwatch .time, .container .output .timer .time {
   display: flex;
   flex-direction: row;
   justify-content: center;

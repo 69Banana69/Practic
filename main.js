@@ -1,11 +1,15 @@
 import Tab from "./module/tabs.js";
 import Clock from "./module/clock.js";
 import Stopwatch from "./module/stopwatch.js";
+import Timer from "./module/timer.js";
 export { htmlElements };
+
 //Fields
 const myClock = new Clock();
 
 const myStopwatch = new Stopwatch(0, 0, 0, 0, null);
+
+const myTimer = new Timer(0, 5, 0, null);
 
 const tabs = new Tab("clock");
 
@@ -29,7 +33,46 @@ htmlElements.second = document.querySelector(".second");
 htmlElements.minute = document.querySelector(".minute");
 htmlElements.hour = document.querySelector(".hour");
 htmlElements.links = document.querySelectorAll(".links > a");
+htmlElements.getTimer = document.querySelector(".container .output .timer");
+htmlElements.timerSec = document.querySelector(
+  ".container .output .timer .time .second"
+);
+htmlElements.timerMin = document.querySelector(
+  ".container .output .timer .time .minute"
+);
+htmlElements.timerHour = document.querySelector(
+  ".container .output .timer .time .hour"
+);
+htmlElements.timerStart = document.querySelector(
+  ".container .output .timer .buttons .start"
+);
+htmlElements.timerEdit = document.querySelector(".edit");
+htmlElements.timerReset = document.querySelector(
+  ".container .output .timer .buttons .reset"
+);
+htmlElements.timerStop = document.querySelector(
+  ".container .output .timer .buttons .stop"
+);
+
 //Listener
+
+//Timer
+myTimer.showTimer();
+htmlElements.timerStart.addEventListener("click", function () {
+  myTimer.startTimer();
+});
+htmlElements.timerStop.addEventListener("click", function () {
+  myTimer.stopTimer();
+});
+htmlElements.timerEdit.addEventListener("click", function () {
+  myTimer.getTime();
+});
+
+htmlElements.timerReset.addEventListener("click", function () {
+  myTimer.resetTimer();
+});
+
+//Stopwatch
 htmlElements.startBtn.addEventListener("click", function () {
   myStopwatch.startStopwatch();
 });
@@ -48,4 +91,6 @@ htmlElements.links.forEach((link) =>
     tabs.updateClock(htmlElements);
   })
 );
+
+//Clock
 myClock.startClock();
