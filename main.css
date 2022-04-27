@@ -32,6 +32,16 @@ body {
   cursor: pointer;
 }
 
+.edit {
+  margin-top: 15px;
+  font-size: 15px;
+  background-color: lightgreen;
+  border: none;
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .container .links {
   /* padding: 10px; */
   font-size: 15px;

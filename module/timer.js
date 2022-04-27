@@ -17,7 +17,9 @@ export default class Timer {
 
   getTime() {
     this.stopTimer();
-    let hValue = prompt("Enter the hours:");
+
+    let hValue = htmlElements.timerHour.innerText;
+
     if (
       isNaN(Number(hValue)) ||
       hValue < 0 ||
@@ -27,10 +29,15 @@ export default class Timer {
       alert("Error. The value is incorrect. Try it again.");
       this.resetTimer();
       return;
+    } else if (hValue != "0") {
+      hValue = hValue.replace(/^0+/, "");
+      this.hour = hValue;
     } else {
       this.hour = hValue;
     }
-    let mValue = prompt("Enter the minutes:");
+
+    let mValue = htmlElements.timerMin.innerText;
+
     if (
       isNaN(Number(mValue)) ||
       mValue < 0 ||
@@ -40,10 +47,15 @@ export default class Timer {
       alert("Error. The value is incorrect. Try it again.");
       this.resetTimer();
       return;
+    } else if (mValue != "0") {
+      mValue = mValue.replace(/^0+/, "");
+      this.minute = mValue;
     } else {
       this.minute = mValue;
     }
-    let sValue = prompt("Enter the seconds:");
+    
+    let sValue = htmlElements.timerSec.innerText;
+
     if (
       isNaN(Number(sValue)) ||
       sValue < 0 ||
@@ -53,6 +65,9 @@ export default class Timer {
       alert("Error. The value is incorrect. Try it again.");
       this.resetTimer();
       return;
+    } else if (sValue != "0") {
+      sValue = sValue.replace(/^0+/, "");
+      this.second = sValue;
     } else {
       this.second = sValue;
     }

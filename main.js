@@ -9,7 +9,7 @@ const myClock = new Clock();
 
 const myStopwatch = new Stopwatch(0, 0, 0, 0, null);
 
-const myTimer = new Timer(0, 5, 0, null);
+const myTimer = new Timer(0, 0, 0, null);
 
 const tabs = new Tab("clock");
 
@@ -34,6 +34,9 @@ htmlElements.minute = document.querySelector(".minute");
 htmlElements.hour = document.querySelector(".hour");
 htmlElements.links = document.querySelectorAll(".links > a");
 htmlElements.getTimer = document.querySelector(".container .output .timer");
+htmlElements.getTimerTime = document.querySelectorAll(
+  ".container .output .timer .time > div"
+);
 htmlElements.timerSec = document.querySelector(
   ".container .output .timer .time .second"
 );
@@ -54,7 +57,7 @@ htmlElements.timerStop = document.querySelector(
   ".container .output .timer .buttons .stop"
 );
 
-htmlElements.timerOver = document.querySelector(".over")
+htmlElements.timerOver = document.querySelector(".over");
 
 //Listener
 
@@ -68,11 +71,22 @@ htmlElements.timerStop.addEventListener("click", function () {
 });
 htmlElements.timerEdit.addEventListener("click", function () {
   myTimer.getTime();
+  this.classList.add("hidden");
+  htmlElements.getTimerTime.forEach((time) =>
+    time.setAttribute("contenteditable", "false")
+  );
 });
 
 htmlElements.timerReset.addEventListener("click", function () {
   myTimer.resetTimer();
 });
+
+htmlElements.getTimerTime.forEach((time) =>
+  time.addEventListener("click", function () {
+    this.setAttribute("contenteditable", "true");
+    htmlElements.timerEdit.classList.remove("hidden");
+  })
+);
 
 //Stopwatch
 htmlElements.startBtn.addEventListener("click", function () {
