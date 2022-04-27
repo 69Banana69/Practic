@@ -1,5 +1,4 @@
 import { htmlElements } from "../main.js";
-//TODO Add valid
 export default class Timer {
   constructor(hour, minute, second, interval) {
     this.hour = hour;
@@ -18,9 +17,46 @@ export default class Timer {
 
   getTime() {
     this.stopTimer();
-    this.hour = prompt("Введите часы:");
-    this.minute = prompt("Минуты");
-    this.second = prompt("Секунды");
+    let hValue = prompt("Enter the hours:");
+    if (
+      isNaN(Number(hValue)) ||
+      hValue < 0 ||
+      hValue === null ||
+      hValue === ""
+    ) {
+      alert("Error. The value is incorrect. Try it again.");
+      this.resetTimer();
+      return;
+    } else {
+      this.hour = hValue;
+    }
+    let mValue = prompt("Enter the minutes:");
+    if (
+      isNaN(Number(mValue)) ||
+      mValue < 0 ||
+      mValue === null ||
+      mValue === ""
+    ) {
+      alert("Error. The value is incorrect. Try it again.");
+      this.resetTimer();
+      return;
+    } else {
+      this.minute = mValue;
+    }
+    let sValue = prompt("Enter the seconds:");
+    if (
+      isNaN(Number(sValue)) ||
+      sValue < 0 ||
+      sValue === null ||
+      sValue === ""
+    ) {
+      alert("Error. The value is incorrect. Try it again.");
+      this.resetTimer();
+      return;
+    } else {
+      this.second = sValue;
+    }
+
     this.showTimer();
   }
 
@@ -35,15 +71,10 @@ export default class Timer {
       this.minute = 59;
     }
 
-
-    if (
-      (this.hour && this.minute && this.second) === 0 ||
-      (this.hour && this.minute && this.second) === "0"
-    ) {
+    if (this.hour == 0 && this.minute == 0 && this.second == 0) {
       clearInterval(this.interval);
       htmlElements.timerOver.classList.remove("hidden");
     }
-
     htmlElements.timerMin.innerText =
       this.minute < 10 ? `0${this.minute}` : this.minute;
     htmlElements.timerSec.innerText =
